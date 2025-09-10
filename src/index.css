@@ -1,0 +1,253 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 23 93% 53%; /* Orange from logo */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 142 76% 36%; /* Community green */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 217 91% 60%; /* Trust blue */
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 23 93% 53%;
+
+    --radius: 0.75rem;
+
+    /* Community-specific colors */
+    --community-warm: 23 93% 53%; /* Orange */
+    --community-nature: 142 76% 36%; /* Green */
+    --community-trust: 217 91% 60%; /* Blue */
+    --community-earth: 25 95% 53%; /* Warm earth tone */
+    
+    /* Gradients */
+    --hero-gradient: linear-gradient(135deg, hsl(var(--community-warm)) 0%, hsl(var(--community-earth)) 100%);
+    --card-gradient: linear-gradient(145deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    --impact-gradient: linear-gradient(135deg, hsl(var(--community-nature)) 0%, hsl(var(--community-trust)) 100%);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 23 93% 53%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Typography hierarchy */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold leading-tight;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  /* Community-specific utilities */
+.hero-gradient {
+  position: relative;
+  background: url('/src/assets/hero-bg.jpg.jpeg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* optional parallax effect */
+}
+
+/* Dark overlay on hero */
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity: 0.5 works well */
+  z-index: 0;
+}
+
+/* Make text and buttons appear above overlay */
+.hero-gradient > * {
+  position: relative;
+  z-index: 10;
+}
+
+
+  .card-gradient {
+    background: var(--card-gradient);
+  }
+
+  .impact-gradient {
+    background: var(--impact-gradient);
+  }
+
+  .text-community-warm {
+    color: hsl(var(--community-warm));
+  }
+
+  .text-community-nature {
+    color: hsl(var(--community-nature));
+  }
+
+  .text-community-trust {
+    color: hsl(var(--community-trust));
+  }
+
+  .bg-community-warm {
+    background-color: hsl(var(--community-warm));
+  }
+
+  .bg-community-nature {
+    background-color: hsl(var(--community-nature));
+  }
+
+  .bg-community-trust {
+    background-color: hsl(var(--community-trust));
+  }
+}
+
+@layer components {
+  /* Button variants using design system */
+  .btn-hero {
+    @apply bg-community-warm hover:bg-community-earth text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-community-nature hover:bg-community-nature/90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply border-2 border-community-warm text-community-warm hover:bg-community-warm hover:text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300;
+  }
+
+  /* Card styles */
+  .community-card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100;
+  }
+
+  .impact-card {
+    @apply impact-gradient text-white rounded-xl shadow-lg p-6;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply text-foreground hover:text-community-warm transition-colors duration-200 font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-community-warm font-semibold;
+  }
+
+  /* Animations */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-up {
+    @apply animate-slide-up;
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
