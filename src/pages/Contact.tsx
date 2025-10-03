@@ -13,7 +13,7 @@ const Contact = () => {
           <h1 className="text-gray-900 mb-6">Get in Touch</h1>
           <p className="text-xl text-gray-600 leading-relaxed">
             We'd love to hear from you. Whether you're interested in our programs, 
-            want to volunteer, or have questions about our work, we're here to help.
+            want to volunteer, or have any question about our work, we're here to help.
           </p>
         </div>
       </section>
