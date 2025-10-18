@@ -6,9 +6,9 @@ import { Heart, Users, BookOpen, Lightbulb, ArrowRight, MapPin, Target, Eye } fr
 
 const Index = () => {
   const impactStats = [
-    { number: "500+", label: "Community Members Served", icon: Users },
+    { number: "1500+", label: "Community Members Served", icon: Users },
     { number: "15", label: "Active Programs", icon: BookOpen },
-    { number: "6", label: "Years of Impact", icon: Heart },
+    { number: "12", label: "Years of Impact", icon: Heart },
     { number: "50+", label: "Research Projects", icon: Lightbulb }
   ];
 
